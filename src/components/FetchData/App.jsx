@@ -47,15 +47,10 @@ function App() {
     setCars(result)
   }
 
-
-
   return (
     <div className='App'>
       <h1>FETCH DATA In React</h1>
-
-
       <button onClick={handleClick}>{isOpen ? "hide" : "show"} Posts</button>
-
       {
         isOpen ? <Posts cars={cars} handleToggle={handleToggle} /> : null
       }

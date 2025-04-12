@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './components/FetchData/App'
+import App from './components/hooks/useState/App'
 
 createRoot(document.getElementById('root')).render(<App />)
