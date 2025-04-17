@@ -26,3 +26,16 @@ img {
 ol, ul {
   list-style-position: inside;
 }
+
+button {
+  font-weight: 600;
+  border: 0;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+
+  color: #1e272e;
+  background-color: #ffa801;
+  margin: 6px;
+}

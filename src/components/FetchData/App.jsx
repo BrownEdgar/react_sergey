@@ -12,9 +12,6 @@ function App() {
   ]);
   const [isOpen, setIsOpen] = useState(false);
 
-
-
-
   // useEffect(() => {
   //   const fetchData = () => {
   //     fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')
@@ -28,8 +25,6 @@ function App() {
   useEffect(() => {
     setIsOpen(true)
   }, []);
-
-
 
   const handleClick = () => {
     setIsOpen(!isOpen)
@@ -54,8 +49,6 @@ function App() {
       {
         isOpen ? <Posts cars={cars} handleToggle={handleToggle} /> : null
       }
-
-
     </div>
   );
 }
