@@ -3,7 +3,9 @@ import List from './components/List/List';
 import './App.css'
 
 
-export default function App() {
+export default function App(props) {
+
+
   const [x, setX] = useState(['Html', 'Css', 'Java Script', 'React.js', 'Node.js', 'Python', "Redis"]);
 
   const handleDelete = (delElem) => {
