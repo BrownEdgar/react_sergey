@@ -1,0 +1,65 @@
+$warning-bg: #d42929;
+$success-bg: #36995f;
+$animation-time: 5s;
+
+@mixin beforeRules($w, $h) {
+  content: '';
+  width: $w;
+  height: $h;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.Alert {
+  position: fixed;
+  top: 20px;
+  width: max(30%, 400px);
+  right: 20px;
+  text-align: center;
+  border-bottom: 1px solid #d42929;
+  padding: 1rem;
+  border-radius: 6px 6px 0 0;
+  color: floralwhite;
+
+  &::before {
+    @include beforeRules(100%, 5px);
+  }
+  p {
+    line-height: 1.7;
+    font-size: 20px;
+  }
+  &__warning {
+    background-color: $warning-bg;
+  }
+  &__success {
+    background-color: $success-bg;
+    top: 161px;
+  }
+  &__show {
+    animation: showAlert $animation-time cubic-bezier(0.66, 1.15, 0.68, 1.2) alternate both;
+    &::before {
+      animation: line $animation-time 1.1s cubic-bezier(0.66, 1.15, 0.68, 1.2) alternate both;
+    }
+  }
+}
+
+@keyframes showAlert {
+  0%,
+  100% {
+    right: -100%;
+  }
+  20%,
+  90% {
+    right: 20px;
+  }
+}
+@keyframes line {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}

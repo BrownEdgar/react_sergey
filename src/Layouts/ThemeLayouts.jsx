@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-
+import { AlertContext } from '../components/contexts/Contexts';
 
 
 //  props.children =  <App />
 function ThemeLayouts(props) {
   const [theme, setTheme] = useState('light');
-  console.log(props.children);
+  const [isOpen, setIsOpen] = useState(false);
+
   const changeTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light')
+    setIsOpen(!isOpen)
   }
 
   useEffect(() => {
@@ -18,7 +20,9 @@ function ThemeLayouts(props) {
   return (
     <div>
       <button onClick={changeTheme}> change Theme</button>
-      {props.children}
+      <AlertContext value={{ isOpen, setIsOpen }}>
+        {props.children}
+      </AlertContext>
     </div>
   );
 }
