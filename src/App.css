@@ -1,12 +1,26 @@
-button {
-  font-weight: 400;
+.App {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 1fr minmax(150px, 400px);
+  min-height: 100vh;
+}
 
-  border: 0;
-  border-radius: 4px;
-  font-size: 16px;
-  padding: 0.3rem 0.6rem;
-  cursor: pointer;
-  margin-left: 20px;
-  background-color: crimson;
-  color: #ecf0f1;
+footer {
+  padding: 60px;
+  background-color: #0a091b;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+  align-content: start;
+  flex-direction: column;
+
+  ul {
+    list-style: none;
+    padding: 26px 0;
+
+    li {
+      margin-bottom: 10px;
+    }
+  }
 }

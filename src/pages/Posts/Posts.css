@@ -1,0 +1,53 @@
+.Posts {
+  width: 1200px;
+  margin: 0 auto;
+
+}
+
+.Posts__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-content: start;
+  justify-content: start;
+
+}
+
+.Posts__item {
+  border-radius: 12px;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  box-shadow: rgba(190, 190, 190, 0.35) 0px 5px 8px;
+  flex-basis: calc(50% - 24px);
+  transition: 0.2s;
+  position: relative;
+  min-height: 80px;
+
+  a {
+    font-weight: 200;
+    font-size: 18px;
+  }
+
+  span {
+    position: absolute;
+    bottom: 0px;
+    right: 10px;
+    font-size: 3em;
+    -webkit-text-stroke: 1px #fff;
+    color: transparent;
+    font-weight: 900;
+
+  }
+
+  &:hover {
+    background-color: #fff;
+    color: #111;
+    cursor: pointer;
+    scale: 1.06;
+    border-radius: 6px;
+
+    &>span {
+      color: #222;
+    }
+  }
+}
