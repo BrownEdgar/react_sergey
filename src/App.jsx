@@ -7,22 +7,26 @@ import { Routes, Route, Navigate, Link } from "react-router";
 import './App.css'
 import Post from './pages/Post/Post';
 import ROUTES from './routes';
+import ErrorPage from './pages/404/ErrorPage';
+import PrivateRoutes from './components/Navbar/PrivateRoutes/PrivateRoutes';
 
 function App() {
   return (
     <div className='App'>
       <Navbar />
-
       <Routes>
         <Route path={ROUTES.HOME} element={<Home title="my home page" />} />
-        <Route path={ROUTES.BLOG} element={<Blog />} />
-        <Route path={ROUTES.POSTS} element={<Posts />} />
-        <Route path={ROUTES.POST} element={<Post />} />
-        <Route path='*' element={<Navigate to={'/'} />} />
+
+
+        <Route element={<PrivateRoutes />}>
+          <Route path={ROUTES.BLOG} element={<Blog />} />
+          <Route path={ROUTES.POSTS} element={<Posts />} />
+          <Route path={ROUTES.POST} element={<Post />} />
+        </Route>
+
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
-
       <footer>
-
         <div>
           <h3>menu</h3>
           <ul>
@@ -35,7 +39,6 @@ function App() {
             <li>
               <Link to={ROUTES.POSTS}>Posts</Link>
             </li>
-
           </ul>
         </div>
         <p>© Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo unde perspiciatis cumque.</p>

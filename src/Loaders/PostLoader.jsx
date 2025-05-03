@@ -3,8 +3,8 @@ import ContentLoader from "react-content-loader"
 
 const PostLoader = (props) => (
   <ContentLoader
-    viewBox="0 0 500 500"
-    height={300}
+    viewBox="0 0 500 420"
+    height={200}
     width={420}
     backgroundColor="#333"
     foregroundColor="#ecebeb"

@@ -22,5 +22,21 @@
   width: 540px;
   border-radius: 12px;
   color: #121212;
-  min-height: 260px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+
+  h2 {
+    line-height: 1.3;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+  }
 }
