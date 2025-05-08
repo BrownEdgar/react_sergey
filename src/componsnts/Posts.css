@@ -1,0 +1,38 @@
+.Posts {
+  display: flex;
+  justify-content: center;
+
+  flex-wrap: wrap;
+  gap: 20px;
+  flex-direction: row;
+  padding: 20px;
+
+  &>div {
+    box-shadow: rgba(255, 255, 255, 0.35) 0px 1px 5px;
+    padding: 1rem;
+    border-radius: 10px;
+    flex-basis: 20%;
+    position: relative;
+
+    span {
+      width: 30px;
+      height: 30px;
+      background-color: crimson;
+      padding: 4px;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    &.active {
+      background-color: orangered;
+      order: -1;
+    }
+  }
+}
