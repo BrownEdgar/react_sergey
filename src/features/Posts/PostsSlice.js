@@ -1,23 +1,57 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import instance from "../../axios.config";
+
+export const getAllPosts = createAsyncThunk("posts/getAllPosts", async () => {
+  try {
+    const response = await instance.get("posts");
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+export const deletePostsByID = createAsyncThunk(
+  "posts/deletePostsByID",
+  async (id) => {
+    const response = await instance.delete(`posts/${id}`);
+    return response.data;
+  }
+);
 
 const postsSlice = createSlice({
-  name: 'posts',
-  initialState: [],
+  name: "posts",
+  initialState: {
+    data: [],
+    loading: false,
+    error: null,
+  },
   reducers: {
-    savePosts(_, action) {
-      return action.payload
+    savePosts(state, action) {
+      state.data.push(action.payload);
+      return state;
     },
-    deletePost(state, action) {
-      const result = state.filter(elem => elem.id !== action.payload);
-      return result
-    },
-    sortPosts(state) {
-      return state.toSorted((a, b) => a.title.localeCompare(b.title))
-    }
-  }
-})
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getAllPosts.fulfilled, (state, action) => {
+      return {
+        data: action.payload,
+        loading: false,
+      };
+    });
+    builder
+      .addCase(getAllPosts.rejected, () => {
+        return {
+          data: [],
+          loading: false,
+        };
+      })
+      .addCase(deletePostsByID.fulfilled, (state, action) => {
+        return {
+          data: state.data.filter((post) => post.id !== action.payload.id),
+          loading: false,
+        };
+      });
+  },
+});
 
-export const { savePosts, deletePost, sortPosts } = postsSlice.actions
-
-export default postsSlice.reducer
-
+export const { savePosts } = postsSlice.actions;
+export default postsSlice.reducer;

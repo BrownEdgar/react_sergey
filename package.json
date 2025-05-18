@@ -7,11 +7,21 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "pretty": "prettier --write \"./**/*.{js,jsx,json}\"",
+    "check-pretty": "prettier --check \"./**/*.{js,jsx,json}\"",
+    "server": "concurrently \"vite\" \"npx json-server db.json --port 3000\""
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@reduxjs/toolkit": "^2.8.1",
+    "axios": "^1.9.0",
+    "concurrently": "^9.1.2",
+    "formik": "^2.4.6",
     "json-server": "^1.0.0-beta.3",
+    "prettier": "^3.5.3",
     "react": "^19.0.0",
     "react-content-loader": "^7.0.2",
     "react-dom": "^19.0.0",
@@ -19,7 +29,8 @@
     "react-paginate": "^8.3.0",
     "react-redux": "^9.2.0",
     "react-router": "^7.5.3",
-    "sass": "^1.87.0"
+    "sass": "^1.87.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

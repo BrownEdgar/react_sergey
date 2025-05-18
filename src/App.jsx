@@ -1,38 +1,53 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
-import { plus } from './features/counter/counterSlice';
-import { addUser } from './features/users/usersSlice';
-import Posts from './componsnts/Posts';
-import { deletePost, sortPosts } from './features/Posts/PostsSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { addCounter } from "./features/counter/couterSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
+import { deletePostsByID, getAllPosts } from "./features/Posts/PostsSlice";
+import Axios from "./components/Axios/Axios";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+
+import "./App.css";
+
+import AddForm from "./components/AddForm/AddForm";
 
 function App() {
+  const counter = useSelector((state) => state.counter);
+  const posts = useSelector((state) => state.posts);
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getAllPosts());
+  }, [dispatch]);
 
-  const [currentID, setcurrentID] = useState(null);
+  const handleClick = () => {
+    dispatch(addCounter({ y: 2 }));
+  };
+  const handleDelete = (id) => {
+    dispatch(deletePostsByID(id));
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const x = e.target.number.value;
-    setcurrentID(x)
-    e.target.reset()
-  }
-
-  const handleSort = () => {
-    dispatch(sortPosts())
-  }
-
-  return <div className='App'>
-    <h1>REDUX {name}</h1>
-
-    <form onSubmit={handleSubmit}>
-      <input type="number" min={1} max={100} id='number' />
-      <input type="submit" value="save" />
-    </form>
-    <button onClick={handleSort}>sort</button>
-
-    <Posts currentID={currentID} />
-  </div>;
+  return (
+    <div className='App'>
+      <h1>REDUX {counter}</h1>
+      <Axios />
+      <button onClick={handleClick}>plus</button>
+      <hr />
+      <AddForm />
+      <div className='users'>
+        {posts.data?.map((post) => {
+          return (
+            <h2 key={post.id}>
+              {post.title}
+              <span onClick={() => handleDelete(post.id)}>
+                {" "}
+                <FontAwesomeIcon icon={faXmark} />{" "}
+              </span>
+            </h2>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 export default App;

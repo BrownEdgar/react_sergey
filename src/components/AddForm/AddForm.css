@@ -1,0 +1,54 @@
+.AddForm {
+  width: 700px;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+
+  form {
+    width: 350px;
+    padding: 12px;
+    background-color: rgb(43, 40, 40);
+
+    input, textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: 18px;
+      padding: 0.6rem;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    .error {
+
+
+      font-size: 14px;
+    }
+  }
+}
+
+.errFlex {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-direction: column;
+  gap: 8px;
+
+  &>p {
+    background-color: crimson;
+    color: aliceblue;
+    padding: 4px;
+    width: 100%;
+    flex-grow: 1;
+
+    em {
+      background-color: orange;
+      margin-right: 10;
+      padding: 2px;
+    }
+  }
+}

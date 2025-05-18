@@ -1,18 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import extraReducersFn from "./extraReducersFn";
+import { getUsers } from "./usersApi";
+
+export const getAllUsers = createAsyncThunk("users/getAllUsers", getUsers);
 
 const usersSlice = createSlice({
-  name: 'users',
-  initialState: ['gago'],
-  reducers: {
-    addUser(state, action) {
-      if (!state.includes(action.payload)) {
-        state.push(action.payload)
-      }
-
-    },
-  }
-})
-
-export const { addUser } = usersSlice.actions
+  name: "users",
+  initialState: {
+    data: [],
+    loading: false,
+    error: null,
+  },
+  reducers: {},
+  extraReducers: extraReducersFn,
+});
 
 export default usersSlice.reducer;
